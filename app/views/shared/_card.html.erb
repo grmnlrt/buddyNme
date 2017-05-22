@@ -1,0 +1,15 @@
+<% pics_url = image_path(@pics[rand(@pics.size)]) %>
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= pics_url %>');">
+  <div class="card-description">
+    <h3><%= mission.title %></h3>
+  </div>
+  <div class="card-category">
+    <h6><%= mission.category %></h6>
+    <p><%= mission.city %> | <%= mission.cost %> $</p>
+  </div>
+  <% avatar_url = image_path(@avatars[rand(@avatars.size)]) %>
+  <%= image_tag avatar_url, class: "card-user avatar-large" %>
+  <%= link_to "", mission_path(mission), class: "card-link" %>
+</div>
+
+

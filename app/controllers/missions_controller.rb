@@ -1,8 +1,10 @@
 class MissionsController < ApplicationController
-  before_action :find_mission, only: [:show]
+  before_action :find_mission, only: [:show, :edit, :destroy]
 
   def index
     @missions =  Mission.all
+    @avatars = Mission::AVATARS
+    @pics = Mission::PICS
   end
 
   def show
