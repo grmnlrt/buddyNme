@@ -1,0 +1,23 @@
+<!-- cards -->
+<div class="container text-center">
+  <h1>Missions</h1>
+  <br>
+  <div class="row">
+    <% @missions.each do |mission| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://unsplash.it/400/?random');">
+          <div class="card-description">
+            <h3><%= mission.title %></h3>
+            <p><%= mission.description %></p>
+          </div>
+          <div class="card-category">
+            <h4><%= mission.category %></h4>
+          </div>
+
+          <img class="card-user avatar" src="http://placehold.it/50">
+          <%= link_to "", mission_path(mission), class: "card-link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
