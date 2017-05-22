@@ -1,0 +1,50 @@
+As User
+I can create an account
+so I can see my profile
+
+As User
+I can create a mission
+so that others can respond to me
+
+As User
+I can view all missions
+so that I can make my choice
+
+As User
+I can view mission's details
+So that I can confirm my choice
+
+As User
+I can pick a mission
+so that I can valid transaction (warning and payment)
+
+As a User
+I can accepte/decline/canceled a mission
+so that I can manage my missions
+
+-------------------------
+
+As a User
+I can leave a rewiew
+so that everyone can see the reviews
+
+As User
+I can filtered mission results
+so that I can precise my choice
+
+As a User
+I can update my profile
+So that I can make changes
+
+
+-------------------------
+
+(As a User
+I can create a calendar of my availability
+So that I can manage my time)
+
+(blacklist)
+
+(As User
+I can discute with my future User
+so that he can match my demand)

@@ -10,3 +10,21 @@ a.btn.btn-primary.btn-lg {
 a.btn.btn-primary.btn-lg:hover {
   transform: scale(8);
 }
+
+.list-badge {
+    max-width: 220px;
+    padding: 20px;
+    margin: auto;
+}
+
+.list-badge img {
+    width: 50%;
+}
+
+.list-badge h3 {
+  font-size: 1.2em;
+}
+
+.list-badge p {
+  font-size: .8em;
+}

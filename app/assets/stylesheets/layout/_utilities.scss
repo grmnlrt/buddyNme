@@ -4,10 +4,19 @@
  * Feel free to change them and create your own
  * ------------------------------------- */
 
+// wrapper
+.wrapper-gray {
+  background: rgb(240,240,240);
+}
+
 // Paddings
 .padded {
   padding-top: 5em;
   padding-bottom: 5em;
+}
+
+.padded-bottom {
+  padding-bottom: 2em;
 }
 
 // Backgrounds
@@ -27,4 +36,8 @@
 // Text color
 .text-brand-color {
   color: $brand-color;
+}
+
+.text-blue-color {
+  color: $blue;
 }
