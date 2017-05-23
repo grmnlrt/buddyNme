@@ -1,0 +1,72 @@
+<div class="container padded">
+  <div class="row">
+    <div class="col-xs-12 show-all">
+
+      <div class="show-picture">
+        <%= image_tag('paris.jpg') %>
+      </div>
+
+      <div class="show-description">
+        <h2><%= @mission.title %></h2>
+        <h4><%= @mission.category %></h4>
+        <p><%= @mission.cost %> $ | <%= @mission.city %></p>
+        <hr>
+        <h4>Context</h4>
+        <p><%= @mission.description %></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CAROUSEL TWITTER -->
+<div id="my_carousel" class="carousel slide" data-ride="carousel">
+<!-- Bulles -->
+<ol class="carousel-indicators">
+<li data-target="#my_carousel" data-slide-to="0" class="active"></li>
+<li data-target="#my_carousel" data-slide-to="1"></li>
+<li data-target="#my_carousel" data-slide-to="2"></li>
+</ol>
+<!-- Slides -->
+<div class="carousel-inner">
+<!-- Page 1 -->
+<div class="item active">
+<div class="carousel-page">
+<img src="http://unsplash.it/400/?random" class="img-responsive" style="margin:0px auto;" />
+</div>
+<div class="carousel-caption">Page 1 de présentation</div>
+</div>
+<!-- Page 2 -->
+<div class="item">
+<div class="carousel-page"><img src="http://unsplash.it/800/?random" class="img-responsive img-rounded"
+style="margin:0px auto;"  /></div>
+<div class="carousel-caption">Page 2 de présentation</div>
+</div>
+<!-- Page 3 -->
+<div class="item">
+<div class="carousel-page">
+<img src="http://unsplash.it/800/?random" class="img-responsive img-rounded"
+style="margin:0px auto;max-height:100%;"  />
+</div>
+<div class="carousel-caption">Page 2 de présentation</div>
+</div>
+</div>
+<!-- Contrôles -->
+<a class="left carousel-control" href="#my_carousel" data-slide="prev">
+<span class="glyphicon glyphicon-chevron-left"></span>
+</a>
+<a class="right carousel-control" href="#my_carousel" data-slide="next">
+<span class="glyphicon glyphicon-chevron-right"></span>
+</a>
+</div>
+
+
+<style>
+.carousel-page
+{
+width:100%;
+height:400px;
+background-color:#5f666d;
+color:white;
+}
+</style>
