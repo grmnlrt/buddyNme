@@ -1,53 +1,54 @@
-<h1>My missions</h1>
 
+<div class="container text-center">
+  <h1><%= current_user.first_name %> <%= current_user.last_name %> current missions</h1>
+</div>
+  <div class="profile-header-wrapper">
+    <div class="container profile-header-container text-center">
+      <div class="profile-header-infos">
+        <% if current_user.facebook_picture_url? %>
+          <% picture_url = current_user.facebook_picture_url %>
+        <% else %>
+           <% picture_url = "http://placehold.it/100" %>
+        <%= image_tag picture_url, class: "avatar-large"  %>
+        <% end %>
+        <h2></h2>
+      </div>
+      <div class="tabs">
+        <%=link_to "#", class: "tab active"  do %>
+          <h3><%= @missions.count %></h3>
+          <p>Missions ordered</p>
+        <% end %>
+        <%=link_to "#", class: "tab"  do %>
+          <h3><%= @missions.count %></h3>
+          <p>Missions offered</p>
+        <% end %>
 
-    <div class="profile-header-wrapper">
-      <div class="container profile-header-container text-center">
-        <div class="profile-header-infos">
-          <% if current_user.facebook_picture_url? %>
-            <% picture_url = current_user.facebook_picture_url %>
-          <% else %>
-             <% picture_url = "http://placehold.it/100" %>
-          <%= image_tag picture_url, class: "avatar-large"  %>
-          <% end %>
-          <h1><%= current_user.first_name %> <%= current_user.last_name %></h1>
-          <h2></h2>
-        </div>
-        <div class="tabs">
-          <a class="tab active" href="#">
-            <h3><%= @missions.count %></h3>
-            <p>Missions ordered</p>
-          </a>
-          <a class="tab" href="#">
-            <h3>...</h3>
-            <p>Missions offered</p>
-          </a>
-
-        </div>
       </div>
     </div>
+  </div>
 
-    <div class="container">
-      <div class="product">
-        <div class='product-upvote'>
-          <div class="product-arrow"></div>
-          <div class='product-count'>95</div>
+  <div class="container">
+    <div class="product">
+      <% count = 1 %>
+        <h2><% @missions.each do |mission| %></h2>
+          <div class='product-upvote'>
+            <div class="product-arrow"></div>
+              <div class='product-count'><%= count %></div>
+          </div>
+         <div class="show-picture">
+          <%= cl_image_tag mission.photo, height: 300, width: 400, crop: :fill, id: "mission-picture" %>
         </div>
-          <h2><% @missions.each do |mission| %></h2>
-           <div class="show-picture">
-            <%= cl_image_tag mission.photo, height: 300, width: 400, crop: :fill, id: "mission-picture" %>
+      <div class='product-body'>
+        <h3> <%= mission.title %></h3>
+        <p> <%= mission.description %></p>
       </div>
-        <div class='product-body'>
-          <h3> <%= mission.title %></h3>
-          <p> <%= mission.description %></p>
-        </div>
-        <ul class="list-inline product-controls">
-          <li><a href=""><i class="fa fa-heart"></i></a></li>
-          <li><a href=""><i class="fa fa-share"></i></a></li>
-          <li><a href=""><i class="fa fa-star"></i></a></li>
-        </ul>
-          <% end %>
-      </div>
+      <ul class="list-inline product-controls">
+        <li><%= link_to "#", class: "fa fa-star" %></li>
+        <li><%= link_to "", mission_path(mission), data: {confirm: "Are you sure?"}, :method => :delete, class: "fa fa-window-close-o" %></li>
+        <%= count + 1 %>
+        <% end %>
+    </div>
 
+   |
 
 
