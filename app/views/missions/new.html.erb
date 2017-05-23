@@ -1,0 +1,16 @@
+<div class="container padded">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+    <h1>New mission</h1>
+      <%= simple_form_for(@mission) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :category %>
+        <%= f.input :title %>
+        <%= f.input :description %>
+        <%= f.input :city %>
+        <%= f.input :cost %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
