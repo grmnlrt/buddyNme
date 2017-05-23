@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
   validates :email, format: { with: /\A.*@.*\..+\z/ }
   has_many :missions
+  has_many :bookings
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
