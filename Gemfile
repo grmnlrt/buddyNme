@@ -16,6 +16,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'faker'
+gem 'cloudinary'
+gem 'carrierwave', '~> 0.11.2'
 
 # Autentification gem
 gem 'devise'

@@ -4,7 +4,7 @@
   <div class="row">
     <% @missions.each do |mission| %>
       <div class="col-xs-12 col-sm-4">
-       <%= render "shared/card", mission: mission %>
+       <%= render "shared/card", mission: mission, user: @user %>
        <br>
       </div>
     <% end %>
