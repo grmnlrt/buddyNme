@@ -1,5 +1,5 @@
 class MissionsController < ApplicationController
-  before_action :find_mission, only: [:show, :edit, :destroy]
+  before_action :find_mission, only: [:show, :edit, :update, :destroy]
 
   def index
     @missions =  Mission.all
@@ -14,6 +14,9 @@ class MissionsController < ApplicationController
     @mission = Mission.new
   end
 
+  def edit
+  end
+
   def create
     @mission = Mission.new(mission_params)
     @mission.user = current_user
@@ -22,6 +25,17 @@ class MissionsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def update
+    @mission.update(mission_params)
+    @mission.save
+    redirect_to mission_path(@mission)
+  end
+
+  def destroy
+    @mission.destroy
+    redirect_to missions_path, :notice => "Your mission has been deleted"
   end
 
   private
