@@ -27,9 +27,11 @@
 .card-description h2 {
   font-size: 24px;
 }
+
 .card-description p {
   font-size: 13px;
-  }
+}
+
 .card-link {
   position: absolute;
   top: 0;
@@ -42,7 +44,7 @@
 }
 .card-link:hover{
   opacity: 0.1;
-
+}
 
 // FriendFinder cards
 
@@ -94,3 +96,4 @@
     width: 70%;
     margin-top: 30px;
     margin-bottom: 20px;
+}
