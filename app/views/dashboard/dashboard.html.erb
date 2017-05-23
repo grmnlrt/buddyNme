@@ -28,26 +28,28 @@
   </div>
 
   <div class="container">
-    <div class="product">
-      <% count = 1 %>
-        <h2><% @missions.each do |mission| %></h2>
-          <div class='product-upvote'>
-            <div class="product-arrow"></div>
-              <div class='product-count'><%= count %></div>
-          </div>
-         <div class="show-picture">
-          <%= cl_image_tag mission.photo, height: 300, width: 400, crop: :fill, id: "mission-picture" %>
+    <% count = 1 %>
+    <h2><% @missions.each do |mission| %></h2>
+      <div class="product">
+        <div class='product-upvote'>
+          <div class="product-arrow"></div>
+            <div class='product-count'><%= count %></div>
         </div>
-      <div class='product-body'>
-        <h3> <%= mission.title %></h3>
-        <p> <%= mission.description %></p>
+       <div class="show-picture">
+        <%= cl_image_tag mission.photo, height: 300, width: 400, crop: :fill, id: "mission-picture" %>
       </div>
-      <ul class="list-inline product-controls">
-        <li><%= link_to "#", class: "fa fa-star" %></li>
-        <li><%= link_to "", mission_path(mission), data: {confirm: "Are you sure?"}, :method => :delete, class: "fa fa-window-close-o" %></li>
-        <%= count + 1 %>
-        <% end %>
+    <div class='product-body'>
+      <h3> <%= mission.title %></h3>
+      <p> <%= mission.description %></p>
     </div>
+    <ul class="list-inline product-controls">
+      <li><%= link_to "#", class: "fa fa-star" %></li>
+      <li><%= link_to "", mission_path(mission), data: {confirm: "Are you sure?"}, :method => :delete, class: "fa fa-window-close-o" %></li>
+      <% count + 1 %>
+    <%= link_to "", mission_path(mission), class: "product-link" %>
+    </div>
+  <% end %>
+</div>
 
    |
 
