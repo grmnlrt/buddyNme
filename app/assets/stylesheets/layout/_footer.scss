@@ -1,1 +1,19 @@
 // Your footer style
+#footer {
+  background: $blue;
+  color: white;
+  padding-bottom: 0;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+}
+
+#footer a {
+  color: white;
+}
+
+#footer address .fa {
+  margin-right: 10px;
+}
+
+#footer p.copyright {
+  font-size: 0.7em;
+}
