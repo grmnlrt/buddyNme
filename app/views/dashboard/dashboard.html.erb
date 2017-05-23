@@ -16,11 +16,11 @@
         <div class="tabs">
           <a class="tab active" href="#">
             <h3><%= @missions.count %></h3>
-            <p>My orders</p>
+            <p>Missions ordered</p>
           </a>
           <a class="tab" href="#">
             <h3>...</h3>
-            <p>My offers</p>
+            <p>Missions offered</p>
           </a>
 
         </div>
@@ -34,7 +34,9 @@
           <div class='product-count'>95</div>
         </div>
           <h2><% @missions.each do |mission| %></h2>
-          <%= image_path("https://unsplash.it/400/?random") %>
+           <div class="show-picture">
+            <%= cl_image_tag mission.photo, height: 300, width: 400, crop: :fill, id: "mission-picture" %>
+      </div>
         <div class='product-body'>
           <h3> <%= mission.title %></h3>
           <p> <%= mission.description %></p>
