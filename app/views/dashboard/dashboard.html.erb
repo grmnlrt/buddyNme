@@ -1,0 +1,51 @@
+<h1>My missions</h1>
+
+
+    <div class="profile-header-wrapper">
+      <div class="container profile-header-container text-center">
+        <div class="profile-header-infos">
+          <% if current_user.facebook_picture_url? %>
+            <% picture_url = current_user.facebook_picture_url %>
+          <% else %>
+             <% picture_url = "http://placehold.it/100" %>
+          <%= image_tag picture_url, class: "avatar-large"  %>
+          <% end %>
+          <h1><%= current_user.first_name %> <%= current_user.last_name %></h1>
+          <h2></h2>
+        </div>
+        <div class="tabs">
+          <a class="tab active" href="#">
+            <h3><%= @missions.count %></h3>
+            <p>My orders</p>
+          </a>
+          <a class="tab" href="#">
+            <h3>...</h3>
+            <p>My offers</p>
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="product">
+        <div class='product-upvote'>
+          <div class="product-arrow"></div>
+          <div class='product-count'>95</div>
+        </div>
+          <h2><% @missions.each do |mission| %></h2>
+          <%= image_path("https://unsplash.it/400/?random") %>
+        <div class='product-body'>
+          <h3> <%= mission.title %></h3>
+          <p> <%= mission.description %></p>
+        </div>
+        <ul class="list-inline product-controls">
+          <li><a href=""><i class="fa fa-heart"></i></a></li>
+          <li><a href=""><i class="fa fa-share"></i></a></li>
+          <li><a href=""><i class="fa fa-star"></i></a></li>
+        </ul>
+          <% end %>
+      </div>
+
+
+
