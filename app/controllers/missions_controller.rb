@@ -23,6 +23,7 @@ class MissionsController < ApplicationController
       redirect_to mission_path(@mission)
     else
       render :new
+
     end
   end
 
@@ -44,6 +45,6 @@ class MissionsController < ApplicationController
   end
 
   def mission_params
-    params.require(:mission).permit(:category, :title, :description, :city, :cost, :review, :user_id, :photo, :photo_cache)
+    params.require(:mission).permit(:category, :title, :description, :city, :cost, :review, :user_id, :photo, :photo_cache, :date)
   end
 end
