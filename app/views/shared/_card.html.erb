@@ -1,10 +1,9 @@
-<%# pics_url = image_path(@pics[rand(@pics.size)]) %>
 <% if mission.photo? %>
   <% my_photo_url = cl_image_path mission.photo, height: 300, width: 400, crop: :fill%>
 <% else %>
     <% my_photo_url = "https://unsplash.it/200/300/?random" %>
 <% end %>
-<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= my_photo_url %>);">
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= my_photo_url %>d);">
   <div class="card-description">
     <h3><%= mission.title %></h3>
   </div>

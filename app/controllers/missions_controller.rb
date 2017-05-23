@@ -3,8 +3,6 @@ class MissionsController < ApplicationController
 
   def index
     @missions =  Mission.all
-    @avatars = Mission::AVATARS
-    @pics = Mission::PICS
   end
 
   def show
