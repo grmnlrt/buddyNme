@@ -1,0 +1,49 @@
+.mission-card {
+    background: white;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 2px #d4d4d4;
+    box-shadow: 2px 2px 2px #d4d4d4;
+    margin: 10px;
+    position: relative;
+    padding: 40px 10px 10px;
+}
+
+.reward {
+    position: absolute;
+    color: white;
+    background: #1fd2b8;
+    padding: 10px;
+    font-weight: bold;
+    right: 15px;
+    top: 0;
+}
+
+.mission-card img {
+    display: block;
+    margin: auto;
+}
+
+.mission-card h3 {
+    font-size: 1.2em;
+    line-height: 0;
+}
+
+.mission-card p {
+    font-size: .9em;
+}
+
+.mission-card hr {
+    border-color: #1fd2b8;
+    width: 80%;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.mission-card a {
+    margin: auto;
+    display: block;
+    width: 70%;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
