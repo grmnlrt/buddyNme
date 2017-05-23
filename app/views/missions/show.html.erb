@@ -13,8 +13,15 @@
         <hr>
         <h4>Context</h4>
         <p><%= @mission.description %></p>
+        <% if @mission.booking %>
+          <%= 'Mission already booked :(' %>
+        <% else %>
+          <%= simple_form_for [@booking] do |f| %>
+            <%= f.input :mission, as: :hidden, input_html: { value: @mission.id } %>
+            <%= f.submit "Book this mission" %>
+          <% end %>
+        <% end %>
       </div>
-
     </div>
   </div>
 </div>
@@ -62,8 +69,7 @@ style="margin:0px auto;max-height:100%;"  />
 
 
 <style>
-.carousel-page
-{
+.carousel-page {
 width:100%;
 height:400px;
 background-color:#5f666d;
