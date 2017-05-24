@@ -4,7 +4,7 @@
 
       <div class="show-picture">
         <% if @mission.photo %>
-          <%=cl_image_tag @mission.photo, height: 300, width: 400, crop: :fill, id: "mission-picture" %>
+          <%=cl_image_tag @mission.photo, height: 400, width: 500, crop: :fill, id: "mission-picture" %>
         <% end %>
         <% if @mission.user.photo %>
           <%= cl_image_tag @mission.user.photo, class: "avatar-large", id: "user-avatar" %>
@@ -14,14 +14,12 @@
 
       <div class="show-description">
         <h2><%= @mission.title %></h2>
-        <h4><%= @mission.category %></h4>
-        <p><%= @mission.cost %> $ | <%= @mission.address %></p>
         <br>
         <div class="icons">
           <p><i class="fa fa-user" aria-hidden="true"></i><%= @mission.user.first_name %> <%= @mission.user.last_name %></p>
           <p><i class="fa fa-tags" aria-hidden="true"></i><%= @mission.category %></p>
           <p><i class="fa fa-money" aria-hidden="true"></i><%= @mission.cost %></p>
-          <p><i class="fa fa-map-marker" aria-hidden="true"></i><%= @mission.city %> <%= link_to "Update Mission", edit_mission_path(@mission), class: "links_show pull-right" %></p>
+          <p><i class="fa fa-map-marker" aria-hidden="true"></i><%= @mission.address %> <%= link_to "Update Mission", edit_mission_path(@mission), class: "links_show pull-right" %></p>
         </div>
 
           <%#= | <%= link_to "Delete Mission", mission_path(@mission), data:confirm: "Are you sure?"}, :method => :delete %>
@@ -34,7 +32,7 @@
           <%= simple_form_for [@booking] do |f| %>
             <%= f.input :mission, as: :hidden, input_html: { value: @mission.id } %>
             <br>
-            <%= f.submit "Book this mission", class: "custom-button" %> <%= link_to "Back to all Missions", missions_path, class: "links_show pull-right" %>
+            <%= f.submit "Book this mission", class: "btn btn-primary" %> <%= link_to "Back to all Missions", missions_path, class: "links_show pull-right" %>
           <% end %>
         <% end %>
       </div>
