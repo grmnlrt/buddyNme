@@ -17,7 +17,7 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'faker'
 gem 'cloudinary'
-gem 'carrierwave', '~> 0.11.2'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
 # Autentification gem
 gem 'devise'
