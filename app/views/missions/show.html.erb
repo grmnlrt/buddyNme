@@ -29,14 +29,14 @@
         <h4>About the Mission</h4>
         <p class='about'>"<%= @mission.description %>"</p>
         <% if @mission.booking %>
-          <%= 'Mission already booked :(' %>
+          <%= 'Mission already booked :(' %><%= link_to "Back to all Missions", missions_path, class: "links_show pull-right" %>
         <% elsif @mission.user == current_user %>
-          <%= "" %>
+          <%= link_to "Back to all Missions", missions_path, class: "links_show pull-right" %>
         <% else %>
           <%= simple_form_for [@booking] do |f| %>
             <%= f.input :mission, as: :hidden, input_html: { value: @mission.id } %>
             <br>
-            <%= f.submit "Book this mission", class: "btn btn-primary" %> <%= link_to "Back to all Missions", missions_path, class: "links_show pull-right" %>
+            <%= f.submit "Book this mission", class: "btn btn-primary" %><%= link_to "Back to all Missions", missions_path, class: "links_show pull-right" %>
           <% end %>
         <% end %>
       </div>
