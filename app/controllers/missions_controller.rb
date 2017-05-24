@@ -29,6 +29,7 @@ class MissionsController < ApplicationController
       redirect_to mission_path(@mission)
     else
       render :new
+
     end
   end
 
