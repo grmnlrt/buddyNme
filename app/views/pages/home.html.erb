@@ -1,8 +1,9 @@
+<% content_for :body_class, "home" %>
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "banner.jpg" %>');">
   <div class="banner-content">
     <h1>No friends ?</h1>
     <p>Here you can rent your future <span class="text-brand-color">buddy</span></p>
-    <%= link_to "I want a friend", missions_path, class: 'btn btn-primary btn-lg' %>
+    <%= link_to "I want a friend", new_mission_path, class: 'btn btn-primary btn-lg' %>
   </div>
 </div>
 

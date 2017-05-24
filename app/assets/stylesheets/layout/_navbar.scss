@@ -1,14 +1,18 @@
 /* Main class */
 .navbar-wagon {
-  // box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  // background: white;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  background: white;
   transition: all 0.3s ease;
   display: flex;
   height: 70px;
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
-  // add
+}
+
+.home .navbar-wagon {
+  box-shadow: none;
+  background: transparent;
   position: absolute;
   width: 100%;
 }
@@ -24,7 +28,7 @@
 
 /* Navbar logo */
 .navbar-wagon-brand img {
-  width: 150px;
+  width: 250px;
 }
 
 /* Navbar right section (with form, links, button) */
@@ -43,10 +47,15 @@
 
 /* Navbar standard link */
 .navbar-wagon-link {
-  // color: #616668;
+  color: $blue;
+  font-size: 14px;
+}
+
+.home .navbar-wagon-link {
   color: white;
   font-size: 14px;
 }
+
 .navbar-wagon-link:hover {
   color: $blue;
   text-decoration: none;
@@ -57,14 +66,26 @@
   margin-left: 10px;
   padding: 0 20px;
   line-height: 40px;
-  color: white;
-  border: 2px solid;
+  color: $blue;
+  border: 2px solid $blue;
   font-size: 14px;
   border-radius: 20em;
   transition: all .4s;
 }
+
+.home .navbar-wagon-button {
+  color: white;
+  border-color: white;
+}
+
 .navbar-wagon-button:hover {
   color: white;
+  background: $blue;
+}
+
+.home .navbar-wagon-button:hover {
+  color: white;
+  background: transparent;
   border-color: $blue;
 }
 
