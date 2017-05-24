@@ -17,25 +17,32 @@
         <h4><%= @mission.category %></h4>
         <p><%= @mission.cost %> $ | <%= @mission.address %></p>
         <br>
-        <%= link_to "Update Mission", edit_mission_path(@mission)%> | <%= link_to "Delete Mission", mission_path(@mission), data: {confirm: "Are you sure?"}, :method => :delete %>
+        <div class="icons">
+          <p><i class="fa fa-user" aria-hidden="true"></i><%= @mission.user.first_name %> <%= @mission.user.last_name %></p>
+          <p><i class="fa fa-tags" aria-hidden="true"></i><%= @mission.category %></p>
+          <p><i class="fa fa-money" aria-hidden="true"></i><%= @mission.cost %></p>
+          <p><i class="fa fa-map-marker" aria-hidden="true"></i><%= @mission.city %> <%= link_to "Update Mission", edit_mission_path(@mission), class: "links_show pull-right" %></p>
+        </div>
+
+          <%#= | <%= link_to "Delete Mission", mission_path(@mission), data:confirm: "Are you sure?"}, :method => :delete %>
         <hr>
-        <h4>Context</h4>
-        <p><%= @mission.description %></p>
+        <h4>About the Mission</h4>
+        <p class='about'>"<%= @mission.description %>"</p>
         <% if @mission.booking %>
           <%= 'Mission already booked :(' %>
         <% else %>
           <%= simple_form_for [@booking] do |f| %>
             <%= f.input :mission, as: :hidden, input_html: { value: @mission.id } %>
-            <%= f.submit "Book this mission" %>
+            <br>
+            <%= f.submit "Book this mission", class: "custom-button" %> <%= link_to "Back to all Missions", missions_path, class: "links_show pull-right" %>
           <% end %>
         <% end %>
-        <br>
-        <%= link_to "Back to all Missions", missions_path%>
       </div>
     </div>
   </div>
 </div>
 
+<<<<<<< HEAD
 
 <!-- CAROUSEL TWITTER -->
 <div id="my_carousel" class="carousel slide" data-ride="carousel">
@@ -87,3 +94,5 @@ background-color:#5f666d;
 color:white;
 }
 </style>
+=======
+>>>>>>> 3257532c9c656b55b0fc12e8b15def532240e5c3
