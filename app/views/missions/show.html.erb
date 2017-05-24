@@ -15,7 +15,7 @@
       <div class="show-description">
         <h2><%= @mission.title %></h2>
         <h4><%= @mission.category %></h4>
-        <p><%= @mission.cost %> $ | <%= @mission.city %></p>
+        <p><%= @mission.cost %> $ | <%= @mission.address %></p>
         <br>
         <%= link_to "Update Mission", edit_mission_path(@mission)%> | <%= link_to "Delete Mission", mission_path(@mission), data: {confirm: "Are you sure?"}, :method => :delete %>
         <hr>

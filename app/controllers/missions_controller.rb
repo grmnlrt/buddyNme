@@ -2,7 +2,13 @@ class MissionsController < ApplicationController
   before_action :find_mission, only: [:show, :edit, :update, :destroy]
 
   def index
-    @missions =  Mission.all
+    @missions =  Mission.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@missions) do |mission, marker|
+      marker.lat mission.latitude
+      marker.lng mission.longitude
+      marker.infowindow render_to_string(partial: "/missions/map_box", locals: { mission: mission })
+    end
   end
 
   def show
@@ -45,6 +51,6 @@ class MissionsController < ApplicationController
   end
 
   def mission_params
-    params.require(:mission).permit(:category, :title, :description, :city, :cost, :review, :user_id, :photo, :photo_cache, :date)
+    params.require(:mission).permit(:category, :title, :description, :address, :cost, :review, :user_id, :photo, :photo_cache)
   end
 end
