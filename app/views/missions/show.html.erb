@@ -14,8 +14,14 @@
         <div class="icons">
           <p><i class="fa fa-user" aria-hidden="true"></i><%= @mission.user.first_name %> <%= @mission.user.last_name %></p>
           <p><i class="fa fa-tags" aria-hidden="true"></i><%= @mission.category %></p>
-          <p><i class="fa fa-money" aria-hidden="true"></i><%= @mission.cost %></p>
-          <p><i class="fa fa-map-marker" aria-hidden="true"></i><%= @mission.address %> <%= link_to "Update Mission", edit_mission_path(@mission), class: "links_show pull-right" %></p>
+          <p><i class="fa fa-money" aria-hidden="true"></i><%= @mission.cost %>
+          <% if current_user == @mission.user %>
+            <%= link_to "Update Mission", edit_mission_path(@mission), class: "links_show pull-right" %>
+          <% end %></p>
+          <p><i class="fa fa-map-marker" aria-hidden="true"></i><%= @mission.address %>
+          <% if current_user == @mission.user %>
+            <%= link_to "Delete Mission", mission_path(@mission), method: :delete, data: {confirm: "Are you sure?"}, class: "links_show pull-right" %>
+            <% end %></p>
         </div>
 
           <%#= | <%= link_to "Delete Mission", mission_path(@mission), data:confirm: "Are you sure?"}, :method => :delete %>
