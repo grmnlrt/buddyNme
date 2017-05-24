@@ -3,87 +3,43 @@
     <div class="col-xs-12 show-all">
 
       <div class="show-picture">
-        <% if @mission.photo %>
-          <%=cl_image_tag @mission.photo, height: 300, width: 400, crop: :fill, id: "mission-picture" %>
-        <% end %>
-        <% if @mission.user.photo %>
-          <%= cl_image_tag @mission.user.photo, class: "avatar-large", id: "user-avatar" %>
-        <% end %>
+        <% event_url = @mission.photo.url || "https://unsplash.it/500/400/?random" %>
+        <%=cl_image_tag event_url, height: 400, width: 500, crop: :fill, id: "mission-picture" %>
       </div>
 
 
       <div class="show-description">
         <h2><%= @mission.title %></h2>
-        <h4><%= @mission.category %></h4>
-        <p><%= @mission.cost %> $ | <%= @mission.city %></p>
         <br>
-        <%= link_to "Update Mission", edit_mission_path(@mission)%> | <%= link_to "Delete Mission", mission_path(@mission), data: {confirm: "Are you sure?"}, :method => :delete %>
+        <div class="icons">
+          <p><i class="fa fa-user" aria-hidden="true"></i><%= @mission.user.first_name %> <%= @mission.user.last_name %></p>
+          <p><i class="fa fa-tags" aria-hidden="true"></i><%= @mission.category %></p>
+          <p><i class="fa fa-money" aria-hidden="true"></i><%= @mission.cost %>
+          <% if current_user == @mission.user %>
+            <%= link_to "Update Mission", edit_mission_path(@mission), class: "links_show pull-right" %>
+          <% end %></p>
+          <p><i class="fa fa-map-marker" aria-hidden="true"></i><%= @mission.address %>
+          <% if current_user == @mission.user %>
+            <%= link_to "Delete Mission", mission_path(@mission), method: :delete, data: {confirm: "Are you sure?"}, class: "links_show pull-right" %>
+            <% end %></p>
+        </div>
+
+          <%#= | <%= link_to "Delete Mission", mission_path(@mission), data:confirm: "Are you sure?"}, :method => :delete %>
         <hr>
-        <h4>Context</h4>
-        <p><%= @mission.description %></p>
+        <h4>About the Mission</h4>
+        <p class='about'>"<%= @mission.description %>"</p>
         <% if @mission.booking %>
-          <%= 'Mission already booked :(' %>
+          <%= 'Mission already booked :(' %><%= link_to "Back to all Missions", missions_path, class: "links_show pull-right" %>
+        <% elsif @mission.user == current_user %>
+          <%= link_to "Back to all Missions", missions_path, class: "links_show pull-right" %>
         <% else %>
           <%= simple_form_for [@booking] do |f| %>
             <%= f.input :mission, as: :hidden, input_html: { value: @mission.id } %>
-            <%= f.submit "Book this mission" %>
+            <br>
+            <%= f.submit "Book this mission", class: "btn btn-primary" %><%= link_to "Back to all Missions", missions_path, class: "links_show pull-right" %>
           <% end %>
         <% end %>
-        <br>
-        <%= link_to "Back to all Missions", missions_path%>
       </div>
     </div>
   </div>
 </div>
-
-
-<!-- CAROUSEL TWITTER -->
-<div id="my_carousel" class="carousel slide" data-ride="carousel">
-<!-- Bulles -->
-<ol class="carousel-indicators">
-<li data-target="#my_carousel" data-slide-to="0" class="active"></li>
-<li data-target="#my_carousel" data-slide-to="1"></li>
-<li data-target="#my_carousel" data-slide-to="2"></li>
-</ol>
-<!-- Slides -->
-<div class="carousel-inner">
-<!-- Page 1 -->
-<div class="item active">
-<div class="carousel-page">
-<img src="http://unsplash.it/400/?random" class="img-responsive" style="margin:0px auto;" />
-</div>
-<div class="carousel-caption">Page 1 de présentation</div>
-</div>
-<!-- Page 2 -->
-<div class="item">
-<div class="carousel-page"><img src="http://unsplash.it/800/?random" class="img-responsive img-rounded"
-style="margin:0px auto;"  /></div>
-<div class="carousel-caption">Page 2 de présentation</div>
-</div>
-<!-- Page 3 -->
-<div class="item">
-<div class="carousel-page">
-<img src="http://unsplash.it/800/?random" class="img-responsive img-rounded"
-style="margin:0px auto;max-height:100%;"  />
-</div>
-<div class="carousel-caption">Page 2 de présentation</div>
-</div>
-</div>
-<!-- Contrôles -->
-<a class="left carousel-control" href="#my_carousel" data-slide="prev">
-<span class="glyphicon glyphicon-chevron-left"></span>
-</a>
-<a class="right carousel-control" href="#my_carousel" data-slide="next">
-<span class="glyphicon glyphicon-chevron-right"></span>
-</a>
-</div>
-
-
-<style>
-.carousel-page {
-width:100%;
-height:400px;
-background-color:#5f666d;
-color:white;
-}
-</style>
