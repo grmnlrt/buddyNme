@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170524090536) do
     t.string   "address"
     t.float    "longitude"
     t.float    "latitude"
+    t.datetime "date"
     t.index ["user_id"], name: "index_missions_on_user_id", using: :btree
   end
 
