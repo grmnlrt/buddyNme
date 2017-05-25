@@ -13,6 +13,7 @@ class MissionsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @user = @mission.user
   end
 
   def new
