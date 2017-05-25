@@ -10,7 +10,6 @@
       <% picture_url = "http://placehold.it/100" %>
       <%= image_tag picture_url, class: "avatar-large"  %>
       <% end %>
-      <h2></h2>
     </div>
     <div class="tabs">
      <div class="tab active" data-target="#ordered">
@@ -18,7 +17,7 @@
       <p>Missions ordered</p>
     </div>
     <div class="tab" data-target="#offered">
-      <h3><%= @missions.count %></h3>
+      <h3><%= @bookings.count %></h3>
       <p>Missions offered</p>
     </div>
   </div>
@@ -27,44 +26,48 @@
 
 <div class="container">
   <div id="ordered" class="tab-content">
-    <div class="product-title"><h3> Booked missions</h3> </div>
-    <% @missions_booked.each do |mission| %>
-    <div class="product">
-     <div class="show-picture">
-      <%= cl_image_tag mission.photo %>
+    <div class="tab-content-mission">
+      <div class="product-title"><h2> Booked missions</h2> </div>
+      <% @missions_booked.each do |mission| %>
+      <div class="product">
+       <div class="show-picture">
+        <%= cl_image_tag mission.photo %>
+      </div>
+      <div class='product-body'>
+        <h3> <%= mission.title %></h3>
+        <p> <%= mission.description %></p>
+      </div>
+      <ul class="list-inline product-controls">
+        <li><%= link_to "#", class: "fa fa-star" %></li>
+        <li><%= link_to "", mission_path(mission), data: {confirm: "Are you sure?"}, :method => :delete, class: "fa fa-window-close-o" %></li>
+      </ul>
+      <%= link_to "", mission_path(mission), class: "product-link" %>
     </div>
-    <div class='product-body'>
-      <h3> <%= mission.title %></h3>
-      <p> <%= mission.description %></p>
+    <% end %>
+    <div id="ordered">
+      <div class="product-title"><h2> Pending missions</h2> </div>
+      <% @missions_pending.each do |mission| %>
+        <div class="product">
+         <div class="show-picture">
+          <%= cl_image_tag mission.photo %>
+        </div>
+        <div class='product-body'>
+          <h3> <%= mission.title %></h3>
+          <p> <%= mission.description %></p>
+        </div>
+        <ul class="list-inline product-controls">
+          <li><%= link_to "#", class: "fa fa-star" %></li>
+          <li><%= link_to "", mission_path(mission), data: {confirm: "Are you sure?"}, :method => :delete, class: "fa fa-window-close-o" %></li>
+        </ul>
+        <%= link_to "", mission_path(mission), class: "product-link" %>
+        </div>
+      <% end %>
     </div>
-    <ul class="list-inline product-controls">
-      <li><%= link_to "#", class: "fa fa-star" %></li>
-      <li><%= link_to "", mission_path(mission), data: {confirm: "Are you sure?"}, :method => :delete, class: "fa fa-window-close-o" %></li>
-    </ul>
-    <%= link_to "", mission_path(mission), class: "product-link" %>
-  </div>
-  <% end %>
-  <hr>
-  <div class="product-title"><h3> Pending missions</h3> </div>
-  <% @missions_pending.each do |mission| %>
-  <div class="product">
-   <div class="show-picture">
-    <%= cl_image_tag mission.photo %>
-  </div>
-  <div class='product-body'>
-    <h3> <%= mission.title %></h3>
-    <p> <%= mission.description %></p>
-  </div>
-  <ul class="list-inline product-controls">
-    <li><%= link_to "#", class: "fa fa-star" %></li>
-    <li><%= link_to "", mission_path(mission), data: {confirm: "Are you sure?"}, :method => :delete, class: "fa fa-window-close-o" %></li>
-  </ul>
-  <%= link_to "", mission_path(mission), class: "product-link" %>
 </div>
-<% end %>
-</div>
+    </div>
   <div id="offered" class="tab-content">
-     <div class="product-title"><h3> Missions to come</h3> </div>
+  <div class="tab-content-mission">
+     <div class="product-title"><h2> Missions to come</h2> </div>
   <% @bookings.each do |booking| %>
   <div class="product">
    <div class="show-picture">
@@ -78,7 +81,8 @@
 </div>
 <% end %>
   </div>
-</div>
+  </div>
+  </div>
 |
 
 

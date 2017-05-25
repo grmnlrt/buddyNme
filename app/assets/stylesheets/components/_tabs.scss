@@ -1,10 +1,11 @@
 .tabs {
-  background: $blue;
+  background: #CCCCCC;
   display: flex;
-  padding: 10px 10px 0 10px
+  padding: 10px 10px 0 10px;
+  margin-top: 10px;
 }
 .tabs a {
-  color: white;
+  color: #FFFFFF;
 }
 .tabs a:hover {
   cursor: pointer;
@@ -36,3 +37,19 @@
   background: white;
   color: black;
 }
+
+.tab-content {
+  background: #CCCCCC;
+  padding : 0px 10px 10px 10px;
+}
+
+.tab-content h2 {
+  margin-top: 0px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.tab-content-mission {
+  background: #FFFFFF;
+}
+
