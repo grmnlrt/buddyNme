@@ -23,7 +23,6 @@
             <%= link_to "Delete Mission", mission_path(@mission), method: :delete, data: {confirm: "Are you sure?"}, class: "links_show pull-right" %>
             <% end %></p>
         </div>
-
           <%#= | <%= link_to "Delete Mission", mission_path(@mission), data:confirm: "Are you sure?"}, :method => :delete %>
         <hr>
         <h4>About the Mission</h4>
@@ -38,6 +37,7 @@
             <br>
             <%= f.submit "Book this mission", class: "btn btn-primary" %><%= link_to "Back to all Missions", missions_path, class: "links_show pull-right" %>
           <% end %>
+
         <% end %>
       </div>
     </div>
