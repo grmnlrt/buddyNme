@@ -3,6 +3,8 @@
  * (margin/padding adjustments)
  * ------------------------------------- */
 
+
+
 .list-badge {
     max-width: 220px;
     padding: 20px;
@@ -19,4 +21,19 @@
 
 .list-badge p {
   font-size: .8em;
+}
+
+ #custom {
+  background: $blue;
+  transition: 0.5s;
+  border: 1px solid white;
+  opacity: 0.9;
+  border-radius: 5px;
+ }
+
+
+#custom:hover {
+  color: witch-color;
+  background: transparent;
+  border: 1px solid $blue;
 }
