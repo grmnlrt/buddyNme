@@ -6,7 +6,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
   validates :email, format: { with: /\A.*@.*\..+\z/ }
-  has_many :missions, through: :wishlists
   has_many :bookings
   has_many :reviews, dependent: :destroy
 
