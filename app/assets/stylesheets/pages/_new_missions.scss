@@ -1,0 +1,40 @@
+.input-group.date.datetimepicker, #new_mission .mission_cost {
+    width: 50%;
+}
+
+#new_mission span.radio label {
+    padding: 7px 15px;
+    border-radius: 5px;
+    border: 2px #1fd2b8 solid;
+    margin: 10px;
+    width: 140px;
+    text-align: center;
+}
+
+#new_mission span.radio label:hover {
+    background: rgba(31, 210, 184, 0.1);
+}
+
+ #new_mission .radio_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#new_mission .radio + .radio {
+  margin-top: 0;
+}
+
+#new_mission .radio {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#new_mission input.radio_buttons {
+  display: none;
+}
+
+.selected-mission, .selected-mission:hover {
+  background: $blue!important;
+  color: white!important;
+}
