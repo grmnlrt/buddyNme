@@ -1,6 +1,7 @@
 class Mission < ApplicationRecord
   CATEGORIES = ["Sport", "Game", "Cultural", "Special Event", "Party", "Work", "Help", "Holidays", "Music", "Other"]
   belongs_to :user
+  has_many :wants
   has_one :booking
   validates :title, presence: true
   validates :category, presence: true
