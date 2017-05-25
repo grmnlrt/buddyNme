@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525151812) do
+ActiveRecord::Schema.define(version: 20170525151723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,12 +76,10 @@ ActiveRecord::Schema.define(version: 20170525151812) do
   end
 
   create_table "wants", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "mission_id"
-    t.integer  "wishlist_id"
     t.index ["mission_id"], name: "index_wants_on_mission_id", using: :btree
-    t.index ["wishlist_id"], name: "index_wants_on_wishlist_id", using: :btree
   end
 
   create_table "wishlists", force: :cascade do |t|
@@ -97,6 +95,5 @@ ActiveRecord::Schema.define(version: 20170525151812) do
   add_foreign_key "missions", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "wants", "missions"
-  add_foreign_key "wants", "wishlists"
   add_foreign_key "wishlists", "users"
 end
