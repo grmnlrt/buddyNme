@@ -5,6 +5,7 @@
   border-radius: 3px;
   transition: all 0.15s ease;
   margin: 10px 0;
+  position: relative;
 }
 
 /* Body design */
@@ -66,6 +67,11 @@
   font-size: 17px;
   color: #E6E6E6;
 }
+
+.product-title {
+  margin-top : 0px;
+}
+
 .product-controls a:hover {
   color: #D3473C !important
 }
@@ -84,6 +90,21 @@
 .product-upvote:hover {
   color: #5898f1;
   cursor: pointer;
+}
+
+.product-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+}
+
+.show-picture img {
+  width: 200px;
 }
 
 .product:hover .product-upvote { transform: scale(1.2) }

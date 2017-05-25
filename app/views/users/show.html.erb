@@ -1,0 +1,19 @@
+
+
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+
+<h2>
+  <%= pluralize @user.reviews.size, "review" %>
+</h2>
+
+<div id="reviews">
+  <% if @user.reviews.blank? %>
+    Be the first to leave a review for <%= @user.first_name %>
+      <%= render 'reviews/form', user: @user, review: Review.new %>
+  <% else %>
+    <% @user.reviews.each do |review| %>
+      <%= render 'reviews/show', review: review %>
+    <% end %>
+  <% end %>
+</div>
+

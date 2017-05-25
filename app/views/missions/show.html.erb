@@ -12,7 +12,7 @@
         <h2><%= @mission.title %></h2>
         <br>
         <div class="icons">
-          <p><i class="fa fa-user" aria-hidden="true"></i><%= @mission.user.first_name %> <%= @mission.user.last_name %></p>
+          <p><i class="fa fa-user" aria-hidden="true"></i><%= @mission.user.first_name %> <%= @mission.user.last_name %><%= link_to "See profile", user_path(@user), class: "links_show pull-right" %></p>
           <p><i class="fa fa-tags" aria-hidden="true"></i><%= @mission.category %></p>
           <p><i class="fa fa-money" aria-hidden="true"></i><%= @mission.cost %>
           <% if current_user == @mission.user %>
@@ -23,7 +23,6 @@
             <%= link_to "Delete Mission", mission_path(@mission), method: :delete, data: {confirm: "Are you sure?"}, class: "links_show pull-right" %>
             <% end %></p>
         </div>
-
           <%#= | <%= link_to "Delete Mission", mission_path(@mission), data:confirm: "Are you sure?"}, :method => :delete %>
         <hr>
         <h4>About the Mission</h4>
@@ -38,6 +37,7 @@
             <br>
             <%= f.submit "Book this mission", class: "btn btn-primary" %><%= link_to "Back to all Missions", missions_path, class: "links_show pull-right" %>
           <% end %>
+
         <% end %>
       </div>
     </div>
