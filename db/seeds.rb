@@ -11,8 +11,9 @@
 
 10.times do
   user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Address.latitude)
-  mission = Mission.new(category: Faker::Job.field, title: Faker::Friends.character, description:Faker::Lorem.sentences(1))
+  mission = Mission.new(category: 'Sport', title: Faker::Friends.character, description:Faker::Lorem.sentences(1), address: "16 villa gaudelet", book: false)
   mission.user = user
   mission.save
 end
+
 

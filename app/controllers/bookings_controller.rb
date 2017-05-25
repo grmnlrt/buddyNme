@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
   def create
     @mission = Mission.find(booking_params[:mission])
     @booking = Booking.create(user: current_user, mission: @mission, date: Time.now)
+    @mission.mark_as_book!
     redirect_to booking_path(@booking)
   end
 

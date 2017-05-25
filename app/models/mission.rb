@@ -8,6 +8,16 @@ class Mission < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+
+  def book?
+    book
+  end
+
+  def mark_as_book!
+    self.book = true
+    self.save
+  end
 end
 
 
