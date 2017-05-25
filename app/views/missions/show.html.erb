@@ -12,7 +12,7 @@
         <h2><%= @mission.title %></h2>
         <br>
         <div class="icons">
-          <p><i class="fa fa-user" aria-hidden="true"></i><%= @mission.user.first_name %> <%= @mission.user.last_name %></p>
+          <p><i class="fa fa-user" aria-hidden="true"></i><%= @mission.user.first_name %> <%= @mission.user.last_name %><%= link_to "See profile", user_path(@user), class: "links_show pull-right" %></p>
           <p><i class="fa fa-tags" aria-hidden="true"></i><%= @mission.category %></p>
           <p><i class="fa fa-money" aria-hidden="true"></i><%= @mission.cost %>
           <% if current_user == @mission.user %>

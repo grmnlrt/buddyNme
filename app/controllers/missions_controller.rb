@@ -2,7 +2,12 @@ class MissionsController < ApplicationController
   before_action :find_mission, only: [:show, :edit, :update, :destroy]
 
   def index
+    @categories = Mission::CATEGORIES
     @missions =  Mission.where.not(latitude: nil, longitude: nil)
+
+    unless params[:localisation].nil?
+      @missions = Mission.near(params[:localisation], 50)
+    end
 
     @hash = Gmaps4rails.build_markers(@missions) do |mission, marker|
       marker.lat mission.latitude
@@ -13,6 +18,7 @@ class MissionsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @user = @mission.user
   end
 
   def new
