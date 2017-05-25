@@ -50,6 +50,8 @@ class MissionsController < ApplicationController
     redirect_to missions_path, :notice => "Your mission has been deleted"
   end
 
+
+
   private
 
   def find_mission
@@ -57,6 +59,6 @@ class MissionsController < ApplicationController
   end
 
   def mission_params
-    params.require(:mission).permit(:category, :title, :description, :address, :cost, :review, :user_id, :photo, :photo_cache, :date)
+    params.require(:mission).permit(:category, :title, :description, :address, :cost, :review, :user_id, :photo, :photo_cache, :date, :book)
   end
 end
