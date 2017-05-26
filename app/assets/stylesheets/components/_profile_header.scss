@@ -18,3 +18,12 @@
 .profile-header-infos {
   padding: 20px 0;
 }
+
+.profile-header-infos .comments {
+    color: white;
+    text-decoration: none;
+}
+
+.profile-header-infos .comments:hover {
+  opacity: .8;
+}

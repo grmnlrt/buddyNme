@@ -12,11 +12,10 @@
         <h2><%= @mission.title %></h2>
         <br>
         <div class="icons">
-        <% if current_user != @mission.user %>
-          <p><i class="fa fa-user" aria-hidden="true"></i><%= @mission.user.first_name %> <%= @mission.user.last_name %><%= link_to "See profile", user_path(@user), class: "links_show pull-right" %></p>
-          <% end %>
+          <p><i class="fa fa-user" aria-hidden="true"></i><%= @mission.user.first_name %> <%= @mission.user.last_name %></p>
           <p><i class="fa fa-tags" aria-hidden="true"></i><%= @mission.category %></p>
-          <p><i class="fa fa-money" aria-hidden="true"></i><%= @mission.cost %>
+          <p><i class="fa fa-calendar" aria-hidden="true"></i><%= @mission.date.strftime("%F %H:%M") %></p>
+          <p><i class="fa fa-dollar" aria-hidden="true"></i><%= @mission.cost %>
           <% if current_user == @mission.user %>
             <%= link_to "Update Mission", edit_mission_path(@mission), class: "links_show pull-right" %>
           <% end %></p>

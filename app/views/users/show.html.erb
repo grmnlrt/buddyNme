@@ -3,10 +3,10 @@
 <div class="wrapper-review padded">
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
-   <% avatar_url = @user.facebook_picture_url || @user.photo.url || "profile.png" %>
-  <%= image_tag avatar_url, class: "avatar"%>
+   <% avatar_url = @user.facebook_picture_url || @user.photo.url || "profile.jpg" %>
+  <%= image_tag avatar_url, class: "avatar-large"%>
   <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-    <%= link_to "Back to all Missions", missions_path, class: "pull-right" %>
+    <%= link_to "Back to my missions", dashboard_path, class: "pull-right" %>
     <br>
     <div id="review_count">
       <%= render 'review_count', reviews: @user.reviews %>
@@ -14,7 +14,7 @@
     <br>
     <div id="reviews">
       <% if @user.reviews.blank? %>
-        Be the first to leave a review for <%= @user.first_name %>
+        <p id="no-review">Be the first to leave a review for <%= @user.first_name %></p>
         <% else %>
           <% @user.reviews.each do |review| %>
           <%= render 'reviews/show', review: review %>

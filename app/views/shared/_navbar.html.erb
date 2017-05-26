@@ -18,7 +18,7 @@
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to dashboard_path do %>
-                <i class="fa fa-user"></i>  <%= t(".profile", default: "Profile") %>
+                <i class="fa fa-user"></i>  <%= t(".profile", default: "My missions") %>
               <% end %>
             </li>
             <li>
@@ -53,12 +53,12 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <% if user_signed_in? %>
           <li><%= link_to "Add a mission", new_mission_path %></li>
-          <li><%= link_to "Profile", dashboard_path %></li>
+          <li><%= link_to "My missions", dashboard_path %></li>
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Log out", destroy_user_session_path %></li>
         <% else %>
           <li><%= link_to "Add a mission", new_mission_path %></li>
-          <li><%= link_to "Profile", dashboard_path %></li>
+          <li><%= link_to "My missions", dashboard_path %></li>
           <li><%= link_to "Login", user_session_path %></li>
         <% end %>
       </ul>

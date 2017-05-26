@@ -7,7 +7,28 @@
         <% picture_url = "http://placehold.it/100" %>
       <% end %>
         <%= image_tag picture_url, class: "avatar-large"  %>
-        <h1><%= current_user.first_name %> <%= current_user.last_name %> current missions</h1>
+        <h1>Hello <%= current_user.first_name %> <%= current_user.last_name %></h1>
+
+        <a href="#" class="comments" data-toggle="modal" data-target=".bs-example-modal-lg">View my comments</a>
+
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="gridSystemModalLabel">Your reviews</h3>
+              </div>
+              <div class="row padded-mini">
+                <div class="col-xs-8 col-xs-offset-2">
+                  <% current_user.reviews.each do |review| %>
+                    <%= render 'reviews/show', review: review %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
     </div>
     <div class="tabs">
      <div class="tab active" data-target="#offered">
@@ -87,7 +108,7 @@
     <div id="ordered" class="tab-content">
       <div class="tab-content-mission">
         <div class="product-title">
-          <h2> Missions to come</h2>
+          <h2>Missions to come</h2>
         </div>
         <% if @bookings.count == 0 %>
           <p class="empty text-center">
@@ -110,6 +131,11 @@
               <p><%= booking.mission.description %></p>
             </div>
             <%= link_to "", mission_path(booking.mission), class: "product-link" %>
+            <div class="list-inline controls">
+              <%= link_to user_path(booking.mission.user) do %>
+                <i class="fa fa-comments" aria-hidden="true"></i>
+              <% end %>
+            </div>
           </div>
         <% end %>
       </div>

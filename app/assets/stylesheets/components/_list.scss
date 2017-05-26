@@ -119,7 +119,7 @@
 
 .product .controls {
     position: absolute;
-    right: 0px;
+    right: -1px;
     z-index: 3;
 }
 
@@ -132,6 +132,10 @@
 .list-inline.controls a:first-child {
     border-radius: 5px 0px 0px 6px;
     padding-right: 4px;
+}
+
+#ordered .list-inline.controls a:first-child {
+    padding-right: 8px;
 }
 
 .list-inline.controls a:hover {
