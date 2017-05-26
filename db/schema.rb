@@ -34,11 +34,11 @@ ActiveRecord::Schema.define(version: 20170525172837) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "photo"
+    t.datetime "date"
     t.string   "address"
     t.float    "longitude"
     t.float    "latitude"
-    t.datetime "date"
-    t.string   "photo"
     t.boolean  "book"
     t.index ["user_id"], name: "index_missions_on_user_id", using: :btree
   end
