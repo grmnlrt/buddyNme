@@ -7,12 +7,12 @@ class ReviewsController < ApplicationController
     if @review.save
       respond_to do |format|
       format.html { redirect_to user_path(@user) }
-      format.js  # <-- will render `app/views/reviews/create.js.erb`
+      format.js {} # <-- will render `app/views/reviews/create.js.erb`
       end
     else
       respond_to do |format|
-      format.html { render 'restaurants/show' }
-      format.js  # <-- idem
+      format.html { render 'users/show' }
+      format.js {} # <-- idem
     end
   end
 end

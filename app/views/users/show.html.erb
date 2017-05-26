@@ -1,19 +1,30 @@
 
-
-<h1><%= @user.first_name %> <%= @user.last_name %></h1>
-
-<h2>
-  <%= pluralize @user.reviews.size, "review" %>
-</h2>
-
-<div id="reviews">
-  <% if @user.reviews.blank? %>
-    Be the first to leave a review for <%= @user.first_name %>
-      <%= render 'reviews/form', user: @user, review: Review.new %>
-  <% else %>
-    <% @user.reviews.each do |review| %>
-      <%= render 'reviews/show', review: review %>
-    <% end %>
-  <% end %>
+<div class="container padded">
+<div class="wrapper-review padded">
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+   <% avatar_url = @user.facebook_picture_url || @user.photo.url || "profile.png" %>
+  <%= image_tag avatar_url, class: "avatar"%>
+  <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+    <%= link_to "Back to all Missions", missions_path, class: "pull-right" %>
+    <br>
+    <div id="review_count">
+      <%= render 'review_count', reviews: @user.reviews %>
+    </div>
+    <br>
+    <div id="reviews">
+      <% if @user.reviews.blank? %>
+        Be the first to leave a review for <%= @user.first_name %>
+        <% else %>
+          <% @user.reviews.each do |review| %>
+          <%= render 'reviews/show', review: review %>
+          <% end %>
+      <% end %>
+    </div>
+    <%= render 'reviews/form', user: @user, review: @review %>
+    </div>
+  </div>
 </div>
+</div>
+
 
