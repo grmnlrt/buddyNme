@@ -11,4 +11,5 @@
   new_review.slideDown();
   // Reset the form
   $('#new_review').html("<%= j render 'reviews/form', user: @user, review: Review.new %>");
+  $('#review_count').html('<%= j render 'users/review_count', reviews: @user.reviews %>')
 <% end %>

@@ -37,10 +37,16 @@
   border: 1px solid $blue;
 }
 
+
 .home .alert-info {
     width: 40%;
     margin: auto;
     position: absolute;
     border-radius: 0;
     right: 30%;
+}
+
+.list-badge p {
+  font-size: 13px;
+  text-align: justify;
 }
