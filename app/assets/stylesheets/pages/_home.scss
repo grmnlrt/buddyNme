@@ -31,9 +31,16 @@
   border-radius: 5px;
  }
 
-
 #custom:hover {
   color: witch-color;
   background: transparent;
   border: 1px solid $blue;
+}
+
+.home .alert-info {
+    width: 40%;
+    margin: auto;
+    position: absolute;
+    border-radius: 0;
+    right: 30%;
 }
