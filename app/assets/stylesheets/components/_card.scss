@@ -46,6 +46,8 @@
 }
 .card-link:hover{
   opacity: 0.1;
+  transition: opacity 0.3s ease;
+
 }
 
 // FriendFinder cards
@@ -103,10 +105,6 @@
 
 // booked cards
 
-.booked {
-  color: #B0B0B0;
-}
-
 .card.booked {
   display: flex;
   align-items: center;
@@ -118,4 +116,11 @@
   flex: 1 0 auto;
   color: #FF8080;
   border-bottom: 3px solid;
+  display: initial!important;
 }
+
+.card.booked:hover p, .card.booked:hover h3, .card.booked:hover h6 {
+  display: none;
+  transition: display 0.3s ease;
+}
+
