@@ -7,7 +7,7 @@
     <h6><%= mission.category %></h6>
     <p><%= mission.address %> | <%= mission.cost %> $</p>
   </div>
-  <% avatar_url = mission.user.facebook_picture_url || mission.user.photo.url || "profile.png" %>
+  <% avatar_url = mission.user.facebook_picture_url || mission.user.photo.url || "profile.jpg" %>
   <%= image_tag avatar_url, class: "card-user avatar" %>
   <%= link_to "", mission_path(mission), class: "card-link" %>
 </div>

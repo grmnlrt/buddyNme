@@ -1,5 +1,4 @@
 .tabs {
-  background: #CCCCCC;
   display: flex;
   padding: 10px 10px 0 10px;
   margin-top: 10px;
@@ -22,10 +21,12 @@
   margin-bottom: 0;
 }
 .tab {
-  background: $red;
+  background: white;
   flex: 0 0 50%;
   text-align: center;
   padding: 20px 0;
+  opacity: .8;
+  cursor: pointer;
 }
 .tab:first-child {
   border-radius: 10px 0 0 0;
@@ -34,13 +35,25 @@
   border-radius: 0 10px 0 0;
 }
 .tab.active {
-  background: white;
-  color: black;
+  background: $red;
+  color: white;
+  opacity: 1;
 }
 
 .tab-content {
-  background: #CCCCCC;
   padding : 0px 10px 10px 10px;
+}
+
+.tab-content hr {
+    border: 1px solid #ee5f5b;
+    width: 40%;
+}
+
+.tab-content .empty {
+    font-style: italic;
+    font-weight: 100;
+    opacity: .6;
+    margin-bottom: 40px;
 }
 
 .tab-content h2 {
@@ -50,6 +63,15 @@
 }
 
 .tab-content-mission {
-  background: #FFFFFF;
+    background: #FFFFFF;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border: 2px $red solid;
+    margin-bottom: 60px;
+    overflow: hidden;
+}
+
+.tab-content-wrapper {
+    background: #e2e2e2;
 }
 
