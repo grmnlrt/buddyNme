@@ -1,0 +1,18 @@
+.wrapper-review {
+border-radius: 10px;
+opacity: 0.8;
+border: 1px solid $blue;
+}
+
+
+.review-card {
+  background: #FFFFFF;
+  padding: 10px;
+  box-shadow: 2px 2px 18px #CCCCCC;
+  border-radius: 7px;
+  margin: 10px;
+ }
+
+.wrapper-review h1 {
+  color: $red;
+}
