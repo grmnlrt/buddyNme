@@ -3,8 +3,10 @@
     <div class="profile-header-infos">
       <% if current_user.facebook_picture_url? %>
         <% picture_url = current_user.facebook_picture_url %>
+      <% elsif current_user.photo.url != nil %>
+        <% picture_url = current_user.photo.url %>
       <% else %>
-        <% picture_url = "http://placehold.it/100" %>
+         <% picture_url = "profile.jpg" %>
       <% end %>
         <%= image_tag picture_url, class: "avatar-large"  %>
         <h1>Hello <%= current_user.first_name %> <%= current_user.last_name %></h1>

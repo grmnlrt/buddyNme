@@ -12,7 +12,12 @@
         <h2><%= @mission.title %></h2>
         <br>
         <div class="icons">
-          <p><i class="fa fa-user" aria-hidden="true"></i><%= @mission.user.first_name %> <%= @mission.user.last_name %></p>
+          <p><i class="fa fa-user" aria-hidden="true"></i><%= @mission.user.first_name %> <%= @mission.user.last_name %>
+          <% unless @mission.user.reviews.count == 0 %>
+
+            <a href="#" class="links_show pull-right" data-toggle="modal" data-target=".bs-example-modal-lg">See <%= @mission.user.first_name %>'s rewiew</a>
+          <% end %>
+          </p>
           <p><i class="fa fa-tags" aria-hidden="true"></i><%= @mission.category %></p>
           <p><i class="fa fa-calendar" aria-hidden="true"></i><%= @mission.date.strftime("%F %H:%M") %></p>
           <p><i class="fa fa-dollar" aria-hidden="true"></i><%= @mission.cost %>
@@ -24,6 +29,25 @@
             <%= link_to "Delete Mission", mission_path(@mission), method: :delete, data: {confirm: "Are you sure?"}, class: "links_show pull-right" %>
             <% end %></p>
         </div>
+
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content text-center">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="gridSystemModalLabel"><%= @mission.user.first_name %>'s reviews</h3>
+              </div>
+              <div class="row padded-mini">
+                <div class="col-xs-8 col-xs-offset-2">
+                  <% @mission.user.reviews.each do |review| %>
+                    <%= render 'reviews/show', review: review %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
           <%#= | <%= link_to "Delete Mission", mission_path(@mission), data:confirm: "Are you sure?"}, :method => :delete %>
         <hr>
         <h4>About the Mission</h4>
