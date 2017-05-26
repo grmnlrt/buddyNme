@@ -1,88 +1,120 @@
-
-
 <div class="profile-header-wrapper">
   <div class="container profile-header-container text-center">
-    <div class="profile-header-infos" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "banner.jpg" %>');">
-      <h1><%= current_user.first_name %> <%= current_user.last_name %> current missions</h1>
+    <div class="profile-header-infos">
       <% if current_user.facebook_picture_url? %>
-      <% picture_url = current_user.facebook_picture_url %>
+        <% picture_url = current_user.facebook_picture_url %>
       <% else %>
-      <% picture_url = "http://placehold.it/100" %>
-      <%= image_tag picture_url, class: "avatar-large"  %>
+        <% picture_url = "http://placehold.it/100" %>
       <% end %>
+        <%= image_tag picture_url, class: "avatar-large"  %>
+        <h1><%= current_user.first_name %> <%= current_user.last_name %> current missions</h1>
     </div>
     <div class="tabs">
-     <div class="tab active" data-target="#ordered">
-      <h3><%= @missions.count %></h3>
-      <p>Missions ordered</p>
-    </div>
-    <div class="tab" data-target="#offered">
-      <h3><%= @bookings.count %></h3>
-      <p>Missions offered</p>
+     <div class="tab active" data-target="#offered">
+        <h3><%= @missions.count %></h3>
+        <p>Missions offered</p>
+      </div>
+      <div class="tab" data-target="#ordered">
+        <h3><%= @bookings.count %></h3>
+        <p>Missions ordered</p>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
-<div class="container">
-  <div id="ordered" class="tab-content">
-    <div class="tab-content-mission">
-      <div class="product-title"><h2> Booked missions</h2> </div>
-      <% @missions_booked.each do |mission| %>
-      <div class="product">
-       <div class="show-picture">
-        <%= cl_image_tag mission.photo %>
+<div class="wrapper tab-content-wrapper">
+  <div class="container">
+    <div id="offered" class="tab-content">
+      <div class="tab-content-mission">
+        <div class="product-title">
+          <h2>Booked missions</h2>
+        </div>
+        <p class="empty text-center"><%= "No missions booked for the moment" if @missions_booked.count == 0 %></p>
+        <% @missions_booked.each do |mission| %>
+          <div class="product">
+            <div class="show-image">
+              <% mission_picture = mission.photo.url || "https://unsplash.it/200/100/?random" %>
+              <%= cl_image_tag mission_picture %>
+            </div>
+            <div class='product-body'>
+              <h3><%= mission.title %></h3>
+              <p><i class="fa fa-usd" aria-hidden="true"></i> <%= mission.cost %></p>
+              <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= mission.address %></p>
+            </div>
+            <div class='product-body desc'>
+              <p><%= mission.description %></p>
+            </div>
+            <%= link_to "", mission_path(mission), class: "product-link" %>
+          </div>
+        <% end %>
+        <hr>
+        <div class="product-title">
+          <h2> Pending missions</h2>
+        </div>
+        <% if @missions_pending.count == 0 %>
+          <p class="empty text-center">
+            No pending missions.
+            <%= link_to "Create one !", new_mission_path %>
+          </p>
+        <% end %>
+        <% @missions_pending.each do |mission| %>
+          <div class="product">
+            <div class="show-image">
+              <% mission_picture = mission.photo.url || "https://unsplash.it/200/100/?random" %>
+              <%= cl_image_tag mission_picture %>
+            </div>
+            <div class='product-body'>
+              <h3><%= mission.title %></h3>
+              <p><i class="fa fa-usd" aria-hidden="true"></i> <%= mission.cost %></p>
+              <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= mission.address %></p>
+            </div>
+            <div class='product-body desc'>
+              <p><%= mission.description %></p>
+            </div>
+            <%= link_to "", mission_path(mission), class: "product-link" %>
+            <div class="list-inline controls">
+              <%= link_to edit_mission_path(mission) do %>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              <% end %>
+              <%= link_to mission_path(mission), data: {confirm: "Are you sure?"}, :method => :delete do %>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <div class='product-body'>
-        <h3> <%= mission.title %></h3>
-        <p> <%= mission.description %></p>
+    </div>
+    <div id="ordered" class="tab-content">
+      <div class="tab-content-mission">
+        <div class="product-title">
+          <h2> Missions to come</h2>
+        </div>
+        <% if @bookings.count == 0 %>
+          <p class="empty text-center">
+            No ordered missions yet.
+            <%= link_to "View all missions", missions_path %>
+          </p>
+        <% end %>
+        <% @bookings.each do |booking| %>
+          <div class="product">
+            <div class="show-image">
+              <% mission_picture = booking.mission.photo.url || "https://unsplash.it/200/100/?random" %>
+              <%= cl_image_tag mission_picture %>
+            </div>
+            <div class='product-body'>
+              <h3><%= booking.mission.title %></h3>
+              <p><i class="fa fa-usd" aria-hidden="true"></i> <%= booking.mission.cost %></p>
+              <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= booking.mission.address %></p>
+            </div>
+            <div class='product-body desc'>
+              <p><%= booking.mission.description %></p>
+            </div>
+            <%= link_to "", mission_path(booking.mission), class: "product-link" %>
+          </div>
+        <% end %>
       </div>
-      <ul class="list-inline product-controls">
-        <li><%= link_to "#", class: "fa fa-star" %></li>
-        <li><%= link_to "", mission_path(mission), data: {confirm: "Are you sure?"}, :method => :delete, class: "fa fa-window-close-o" %></li>
-      </ul>
-      <%= link_to "", mission_path(mission), class: "product-link" %>
     </div>
-    <% end %>
-    <div id="ordered">
-      <div class="product-title"><h2> Pending missions</h2> </div>
-      <% @missions_pending.each do |mission| %>
-        <div class="product">
-         <div class="show-picture">
-          <%= cl_image_tag mission.photo %>
-        </div>
-        <div class='product-body'>
-          <h3> <%= mission.title %></h3>
-          <p> <%= mission.description %></p>
-        </div>
-        <ul class="list-inline product-controls">
-          <li><%= link_to "#", class: "fa fa-star" %></li>
-          <li><%= link_to "", mission_path(mission), data: {confirm: "Are you sure?"}, :method => :delete, class: "fa fa-window-close-o" %></li>
-        </ul>
-        <%= link_to "", mission_path(mission), class: "product-link" %>
-        </div>
-      <% end %>
-    </div>
+  </div>
 </div>
-    </div>
-  <div id="offered" class="tab-content">
-  <div class="tab-content-mission">
-     <div class="product-title"><h2> Missions to come</h2> </div>
-  <% @bookings.each do |booking| %>
-  <div class="product">
-   <div class="show-picture">
-    <%= cl_image_tag booking.mission.photo %>
-  </div>
-  <div class='product-body'>
-    <h3> <%= booking.mission.title %></h3>
-    <p> <%= booking.mission.description %></p>
-  </div>
-  <%= link_to "", mission_path(booking.mission), class: "product-link" %>
-</div>
-<% end %>
-  </div>
-  </div>
-  </div>
-|
 
 

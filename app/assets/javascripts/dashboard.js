@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $("#offered").hide();
+  $("#ordered").hide();
   $(".tab").click(function(){
       $(".tab").removeClass( "active" );
       $(this).addClass("active");
