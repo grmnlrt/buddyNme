@@ -1,0 +1,15 @@
+<% background_url = mission.photo.url || "https://unsplash.it/263/175/?random" %>
+<div class="card booked" style="background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,1)), url(<%= background_url %>);">
+  <p class="cannotbook text-center">Already booked</p><br>
+  <div class="card-description booked">
+    <h3><%= mission.title %></h3>
+  </div>
+  <div class="card-category">
+    <h6><%= mission.category %></h6>
+    <p><%= mission.address %> | <%= mission.cost %> $</p>
+  </div>
+  <% avatar_url = mission.user.facebook_picture_url || mission.user.photo.url || "profile.png" %>
+  <%= image_tag avatar_url, class: "card-user avatar" %>
+</div>
+
+

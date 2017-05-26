@@ -7,6 +7,8 @@
   color: white;
   position: relative;
 }
+
+
 .card-user {
   position: absolute;
   right: 10px;
@@ -44,6 +46,8 @@
 }
 .card-link:hover{
   opacity: 0.1;
+  transition: opacity 0.3s ease;
+
 }
 
 // FriendFinder cards
@@ -98,3 +102,25 @@
     margin-top: 30px;
     margin-bottom: 20px;
 }
+
+// booked cards
+
+.card.booked {
+  display: flex;
+  align-items: center;
+  text-shadow: 0 0px 0px rgba(0,0,0,0.6);
+  color: #949494;
+}
+
+.cannotbook {
+  flex: 1 0 auto;
+  color: #FF8080;
+  border-bottom: 3px solid;
+  display: initial!important;
+}
+
+.card.booked:hover p, .card.booked:hover h3, .card.booked:hover h6 {
+  display: none;
+  transition: display 0.3s ease;
+}
+

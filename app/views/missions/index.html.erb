@@ -23,7 +23,11 @@
     <div class="row">
       <% @missions.each do |mission| %>
         <div class="col-xs-12 col-sm-6 col-md-4">
-         <%= render "shared/card", mission: mission, user: @user %>
+        <% if mission.book %>
+          <%= render "shared/card_booked", mission: mission, user: @user %>
+        <% else %>
+          <%= render "shared/card", mission: mission, user: @user %>
+        <% end %>
          <br>
         </div>
       <% end %>
